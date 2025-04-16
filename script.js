@@ -1,29 +1,40 @@
-// Загружаем баланс из localStorage или устанавливаем 0
-let balance = parseInt(localStorage.getItem('balance')) || 0;
+// Баланс и localStorage
+let balance = parseInt(localStorage.getItem('balance')) || 512;
 
-// Обновляем отображение баланса
 function updateBalance() {
     document.getElementById('balance').textContent = balance;
-    localStorage.setItem('balance', balance); // Сохраняем в localStorage
+    document.getElementById('profile-balance').textContent = balance;
+    localStorage.setItem('balance', balance);
 }
 
-// Пополнение баланса
-function addMoney() {
-    balance += 1000;
-    updateBalance();
-    alert("Баланс пополнен на 1000 ¥! 🤑");
-}
-
-// Покупка товара
+// Покупка
 function buyItem(price) {
     if (balance >= price) {
         balance -= price;
         updateBalance();
-        alert("Покупка совершена! Но это фейк 😂");
+        alert('Покупка совершена!');
     } else {
-        alert("Не хватает денег! Нажми 'Пополнить баланс'.");
+        alert('Недостаточно средств!');
     }
 }
 
-// Инициализация при загрузке страницы
+// Пополнение
+function addMoney() {
+    balance += 1000;
+    updateBalance();
+    alert('Баланс пополнен на 1000 ¥');
+}
+
+// Переключение вкладок
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+});
+
+// Инициализация
 updateBalance();
