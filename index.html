@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Poizon 😈</title>
+    <title>FAKE POIZON</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>🔥 FAKE POIZON (for fun) 🔥</h1>
-        <div class="balance">Баланс: <span id="balance">0</span> ¥</div>
-    </header>
-    
-    <div class="shop">
-        <div class="item">
-            <img src="images/9hq.jpg" alt="Футболка Hi Gitler">
-            <h3>Футболка 'Hi Gitler'</h3>
-            <p>Цена: 1488 ¥</p>
-            <button onclick="buyItem(1488)">Купить</button>
-        </div>
+    <div class="app">
+        <!-- Шапка -->
+        <header>
+            <div class="logo">POIZON</div>
+            <nav>
+                <button class="nav-btn active" data-tab="market">Маркетплейс</button>
+                <button class="nav-btn" data-tab="profile">Профиль</button>
+            </nav>
+            <div class="balance">Баланс: <span id="balance">512</span> ¥</div>
+        </header>
+
+        <!-- Контент -->
+        <main>
+            <!-- Вкладка Маркетплейс -->
+            <div class="tab-content active" id="market">
+                <div class="item">
+                    <img src="images/9hq.jpg" alt="Футболка Hi Gitler">
+                    <div class="item-info">
+                        <h3>[МЛР] Капуг!</h3>
+                        <p>Футболка 'Hi Gitler'</p>
+                        <div class="price">1488 ¥</div>
+                        <button onclick="buyItem(1488)">Купить</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка Профиль -->
+            <div class="tab-content" id="profile">
+                <div class="profile-card">
+                    <h2>Ваш профиль</h2>
+                    <p>Баланс: <strong id="profile-balance">512</strong> ¥</p>
+                    <button onclick="addMoney()">Пополнить баланс</button>
+                </div>
+            </div>
+        </main>
     </div>
-    
-    <button class="add-money" onclick="addMoney()">Пополнить баланс (халява!)</button>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
